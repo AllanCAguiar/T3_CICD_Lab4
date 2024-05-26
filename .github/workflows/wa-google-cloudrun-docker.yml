@@ -61,12 +61,12 @@ jobs:
 
       # build image
       - name: Build Docker image
-        run: docker build -t $IMAGE_NAME .
+        run: docker build -t "$IMAGE_NAME" .
 
       # push image to registry
       - name: Push Docker image
-        run: docker push $IMAGE_NAME
+        run: docker push "$IMAGE_NAME"
 
       # deploy image
       - name: Deploy Docker image
-        run: gcloud run deploy webacad --image $IMAGE_NAME --region southamerica-east1 --memory 128Mi --min-instances 0 --max-instances 1 --platform managed --port 8080 --allow-unauthenticated
+        run: gcloud run deploy webacad --image "$IMAGE_NAME" --region southamerica-east1 --memory 128Mi --min-instances 0 --max-instances 1 --platform managed --port 8080 --allow-unauthenticated
